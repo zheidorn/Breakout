@@ -10,54 +10,42 @@ import UIKit
 
 class ViewController: UIViewController, UICollisionBehaviorDelegate {
    var dynamicAnimator = UIDynamicAnimator()
+    var collisionBehavior = UICollisionBehavior()
+    var pushBehavior = UIPushBehavior()
    
+    
+    let lengthOfBlock:CGFloat = 50.0
+    
+    let heightOfBlock:CGFloat = 15.0
+    
+    var ball:UIView!
+    var blocks:[UIView] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dynamicAnimator = UIDynamicAnimator(referenceView: view)
-        createBlock()
-    }
-    
-    func createBlock(){
-        let heightOfBlock = 50
-        let lengthOfBlock = 0
-//        //let blueSquare = UIView(frame: CGRectMake(100, 100, 50, 50))
-//        blueSquare.backgroundColor = UIColor.blackColor()
-//        view.addSubview(blueSquare)
-//        
-//        let redSquare = UIView(frame: CGRectMake(300, 400, 50, 50))
-//        redSquare.backgroundColor = UIColor.redColor()
-//        view.addSubview(redSquare)
-        
-        addDynamicBehavior([blueSquare, redSquare])
     }
     
     
-    func addDynamicBehavior(array: [UIView])
+    func createBlocks()
     {
-        let dynamicItemBehavior = UIDynamicItemBehavior(items: array)
-        dynamicItemBehavior.density = 1.0
-        dynamicItemBehavior.friction = 0.0
-        dynamicItemBehavior.resistance = 0.0
-        dynamicItemBehavior.elasticity = 1.0
-        dynamicAnimator.addBehavior(dynamicItemBehavior)
+        var x:CGFloat = 0
+        var y:CGFloat = 50
         
-        let pushBehavior = UIPushBehavior(items: array, mode: .Instantaneous)
-        pushBehavior.magnitude = 1.0
-        pushBehavior.pushDirection = CGVectorMake(0.5, 0.5)
-        dynamicAnimator.addBehavior(pushBehavior)
-        
-        let collisionBehavior = UICollisionBehavior(items: array)
-        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
-        collisionBehavior.collisionMode = .Everything
-        collisionBehavior.collisionDelegate = self
-        dynamicAnimator.addBehavior(collisionBehavior)
-        
+        for _ in 1...5
+        {
+            for _ in 1...13
+            {
+                let block = UIView(frame: CGRectMake(x, y, lengthOfBlock, heightOfBlock))
+                block.backgroundColor = UIColor.blackColor()
+                view.addSubview(block)
+                
+            }
     }
 
     
 
+
+    }
 
 }
-
