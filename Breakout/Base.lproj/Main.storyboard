@@ -21,9 +21,16 @@
                                 <rect key="frame" x="213" y="883" width="342" height="12"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M6-ho-tUl">
+                                <rect key="frame" x="65" y="654" width="66" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="687-OL-BeE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -34,6 +41,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="paddle" destination="vg6-WQ-VYe" id="SaI-pd-8bJ"/>
+                        <outlet property="startButton" destination="1M6-ho-tUl" id="KgG-4D-9Cq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
