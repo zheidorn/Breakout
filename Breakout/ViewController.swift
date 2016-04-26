@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var pushBehavior = UIPushBehavior()
    
     
-    let lengthOfBlock:CGFloat = 55.0
+    let lengthOfBlock:CGFloat = 60.0
     
     let heightOfBlock:CGFloat = 30.0
     
@@ -25,7 +25,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var bothArray:[UIView] = []
     var paddleArray:[UIView] = []
     @IBOutlet weak var paddle: UILabel!
-    @IBOutlet weak var startButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +35,15 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         panViews.append(paddle)
         bothArray.append(paddle)
         paddleArray.append(paddle)
+        view.backgroundColor = UIColor.init(red: 9/255, green: 66/255, blue: 67/255, alpha: 1.0)
     }
     
     @IBAction func startBallAction(sender: UIButton) {
         
-        startButton.alpha = 0.0
-        
         setupBehaviors()
         pushBehavior = UIPushBehavior(items: startBallArray, mode: .Instantaneous)
         pushBehavior.pushDirection = CGVectorMake(0.2, 1.0)
-        pushBehavior.magnitude = 0.35
+        pushBehavior.magnitude = 0.40
         pushBehavior.active = true
         dynamicAnimator.addBehavior(pushBehavior)
     }
@@ -56,12 +55,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     func createBlocks()
     {
-        var x:CGFloat = 0
+        var x:CGFloat = 15
         var y:CGFloat = 45
         
         for _ in 1...4
         {
-            for _ in 1...13
+            for _ in 1...11
             {
                 let block = UIView(frame: CGRectMake(x, y, lengthOfBlock, heightOfBlock))
                 block.backgroundColor = UIColor.grayColor()
@@ -73,8 +72,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                 
                 x += (15 + lengthOfBlock)
             }
-            x = 0
-            y += (30 + heightOfBlock)
+            x = 15
+            y += (25 + heightOfBlock)
                 
             
     }
@@ -87,7 +86,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         func createBall()
         {
             ball = UIView(frame: CGRectMake(300, 300, 20, 20))
-            ball.backgroundColor = UIColor.grayColor()
+            ball.backgroundColor = UIColor.init(red: 0, green: 244/255, blue: 244/255, alpha: 1.0)
             view.addSubview(ball)
             ball.layer.cornerRadius = ball.frame.size.width/2
             ball.clipsToBounds = true
@@ -162,7 +161,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
    
     func initGame()
     {
-        startButton.alpha = 1.0
+        
         setupBehaviors()
         createBlocks()
         createBall()
